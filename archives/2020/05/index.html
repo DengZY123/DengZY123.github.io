@@ -20,20 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","Pisces | Gemini":240,"width":200,"display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":false,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="在计算机中，我们经常会碰到精度丢失的问题，比如 100&#x2F;3&#x3D;33.33，那么会有 0.01 的精度被丢失掉了。之前以为这种是程序设计的问题，但是后来发现，这个问题的根源，不在于计算机，而在于与计算机紧密相连的数学问题。是数学规定，100&#x2F;3，就是除不尽。这种问题，可以通过程序设计来规避，比如支付宝的 AA 收款，如果有 100 元，三个人均摊，那么发起 AA 收款的人，需要支付 33.34，另外两">
-<meta property="og:type" content="article">
-<meta property="og:title" content="闲谈：计算机和语言">
-<meta property="og:url" content="http://example.com/2021/05/01/yuque/%E9%97%B2%E8%B0%88%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%92%8C%E8%AF%AD%E8%A8%80/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="邓子扬的博客">
+<meta property="og:url" content="http://example.com/archives/2020/05/index.html">
 <meta property="og:site_name" content="邓子扬的博客">
-<meta property="og:description" content="在计算机中，我们经常会碰到精度丢失的问题，比如 100&#x2F;3&#x3D;33.33，那么会有 0.01 的精度被丢失掉了。之前以为这种是程序设计的问题，但是后来发现，这个问题的根源，不在于计算机，而在于与计算机紧密相连的数学问题。是数学规定，100&#x2F;3，就是除不尽。这种问题，可以通过程序设计来规避，比如支付宝的 AA 收款，如果有 100 元，三个人均摊，那么发起 AA 收款的人，需要支付 33.34，另外两">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-01T15:06:13.000Z">
-<meta property="article:modified_time" content="2021-03-13T14:27:02.052Z">
 <meta property="article:author" content="邓子扬">
-<meta property="article:tag" content="闲谈">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/05/01/yuque/%E9%97%B2%E8%B0%88%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%92%8C%E8%AF%AD%E8%A8%80/">
+<link rel="canonical" href="http://example.com/archives/2020/05/">
 
 
 <script id="page-configurations">
@@ -41,12 +36,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>闲谈：计算机和语言 | 邓子扬的博客</title>
+  <title>归档 | 邓子扬的博客</title>
   
 
 
@@ -165,108 +160,50 @@
         <div class="content-wrap">
           
 
-          <div class="content post posts-expand">
+          <div class="content archive">
             
 
-    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/01/yuque/%E9%97%B2%E8%B0%88%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%92%8C%E8%AF%AD%E8%A8%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avapng.png">
-      <meta itemprop="name" content="邓子扬">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邓子扬的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          闲谈：计算机和语言
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-01 23:06:13" itemprop="dateCreated datePublished" datetime="2021-05-01T23:06:13+08:00">2021-05-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-13 22:27:02" itemprop="dateModified" datetime="2021-03-13T22:27:02+08:00">2021-03-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-                </span>
-            </span>
-
-          
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <span class="collection-header">嗯..! 目前共计 9 篇日志。 继续努力。</span>
+      </div>
 
       
-        <p>在计算机中，我们经常会碰到精度丢失的问题，比如 100/3=33.33，那么会有 0.01 的精度被丢失掉了。之前以为这种是程序设计的问题，但是后来发现，这个问题的根源，不在于计算机，而在于与计算机紧密相连的数学问题。是数学规定，100/3，就是除不尽。这种问题，可以通过程序设计来规避，比如支付宝的 AA 收款，如果有 100 元，三个人均摊，那么发起 AA 收款的人，需要支付 33.34，另外两个人需要支付 33.33。</p>
-<p>另外一种精度问题，是属于计算机的设计缺陷。比如在计算机里，0.1+0.2！=0.3，因为计算机在处理类似等式时，会把他们换成二进制数，再进行相加。这类问题的根源，在于计算机设计时，采用了二进制的计算方法。这种问题，也可以通过程序设计来进行规避。</p>
-<p>由此想到了语言本身的缺陷。如果一个语言系统足够完美，那么它是不会出现歧义的问题。语言会有歧义，说明语言本身有缺陷。这些缺陷，对于语言来说，并不一定都是坏事，诗人会利用歧义来表达更深刻的意义，幽默的人会利用歧义来表达幽默，歧义在一定程度上，让语言更易于学习。因为一门完美的语言，必定会设计过多的规则去限制，从而导致语言的复杂性变高，更难学习。</p>
-<p>相比于中文，我觉得英文的设计，更加简洁和有逻辑。比如时态这种东西，中文里并没有严格意义上的时态体系，中文一般是通过给动词加状语来表示时态。但是英文里面，光时态的划分就有 16 种。</p>
-<p>更有趣的是，我们可以自己尝试去设计一门语言，用自己制定的规则，去和中文、英文做比较，一是可以体会到造物主的乐趣，毕竟不是所有人都有创造语言的经历，二是可以更好的去学习英语。假如我们学习英语语法，不再是去死记硬背英语的语法，而是去比较英语比我自己设计的语言，好在哪里？为什么要这么设计？有哪些可以借鉴的地方？通过对比，我们可以更深刻的去理解语言背后的逻辑是什么。</p>
-<p>但是像是因为二进制导致的缺陷，就不属于数学的缺陷，而是计算机系统设计的缺陷。计算机设计的时候，底层用的就是二进制，所以一定会存在一定的误差，解决的办法也是通过二进制来</p>
-<p>语言本身也存在缺陷，完美的语言系统，是不会出现歧义的问题。相比于中文，英文的设计更加简洁和优雅。中文会显得繁琐，并缺少逻辑。比如表示时态，英文光时态就有十六种时态，而中文是通过给动词加状语，来表示时间。比如，中文说他去过学校，英文按照时态，可以分成： 4.我好像分不清锦和绵。</p>
-
+    <div class="collection-year">
+      <span class="collection-header">2020</span>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E9%97%B2%E8%B0%88/" rel="tag"># 闲谈</a>
-          </div>
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2020-05-01T23:06:13+08:00"
+              content="2020-05-01">
+          05-01
+        </time>
+      </div>
 
-        
+      <div class="post-title">
+          <a class="post-title-link" href="/2020/05/01/yuque/%E9%97%B2%E8%B0%88%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%92%8C%E8%AF%AD%E8%A8%80/" itemprop="url">
+            <span itemprop="name">闲谈：计算机和语言</span>
+          </a>
+      </div>
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2021/03/13/yuque/Git%E5%B7%A5%E4%BD%9C%E6%B5%81/" rel="prev" title="Git工作流">
-      <i class="fa fa-chevron-left"></i> Git工作流
-    </a></div>
-      <div class="post-nav-item"></div>
-    </div>
-      </footer>
-    
+    </header>
   </article>
+
+
+    </div>
+  </div>
   
   
+  
+
   
 
 
