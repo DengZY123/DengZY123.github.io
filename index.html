@@ -120,17 +120,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">8</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">10</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">9</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">8</span></a>
 
   </li>
         <li class="menu-item menu-item-schedule">
@@ -197,7 +197,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-13 21:43:11" itemprop="dateModified" datetime="2021-03-13T21:43:11+08:00">2021-03-13</time>
+                <time title="修改时间：2021-03-13 21:51:49" itemprop="dateModified" datetime="2021-03-13T21:51:49+08:00">2021-03-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -246,81 +246,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/13/yuque/%E6%97%A0%E6%A0%87%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avapng.png">
-      <meta itemprop="name" content="邓子扬">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邓子扬的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/13/yuque/%E6%97%A0%E6%A0%87%E9%A2%98/" class="post-title-link" itemprop="url">无标题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-03-13 21:41:47 / 修改时间：21:43:11" itemprop="dateCreated datePublished" datetime="2021-03-13T21:41:47+08:00">2021-03-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>在使用 VS 写 QT 的 C++项目的时候，直接输入中文，但是一直乱码。如下图。后来找了一圈，发现 windows 默认使用的格式是 GBK/GB2312/GB18030。如果要输入中文，需要对含中文的字符串进行转码。<br><img src="https://img-blog.csdnimg.cn/20210114162946391.png#align=left&display=inline&height=28&margin=%5Bobject%20Object%5D&originHeight=28&originWidth=416&status=uploading&style=none&width=416"></p>
-<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>要按照下面的方式来写。</p>
-<p>fromLocal8Bit 的作用是使 GBK/GB2312/GB18030 格式的字符串转换成 Unicode 格式。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dock-&gt;setWindowTitle(QString::fromLocal8Bit(<span class="string">&quot;课程列表&quot;</span>));</span><br></pre></td></tr></table></figure>
-<h1 id="新出现的问题"><a href="#新出现的问题" class="headerlink" title="新出现的问题"></a>新出现的问题</h1><p>过了一段时间，结果按照上面的方式写，又出现中文乱码,如下图。理论上来说，同样的代码执行结果应该是完全一样的。所以可能不是代码的问题，而是别的问题。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642913321-312e62c7-202b-4be3-a983-a3950c8506fb.png#align=left&display=inline&height=48&margin=%5Bobject%20Object%5D&originHeight=48&originWidth=411&size=0&status=done&style=none&width=411"></p>
-<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p>经过排查和网上搜索相关的文章，发现问题的原因果然不在代码上，而文件的保存格式有问题。通常代码里面中文的编码格式会设置成 UTF-8。但是 UTF-8 也分为两种，一种带签名，一种不带签名。带签名的会有 BOM 信息，来告诉应用程序所用的是 UTF-8 编码。</p>
-<ul>
-<li>UTF-8（带签名）：带有 BOM 信息，可以被应用程序识别为 UTF-8 编码。</li>
-<li>UTF-8（不带签名）：不带有 BOM 信息，不能被应用程序识别为 UTF-8 编码。在被其他文件 include 时，需要使用这种。</li>
-</ul>
-<p>因为编码问题而出现乱码的情况，无非也就两种：一种是在应该使用 UTF-8（带签名）的文件里使用不带签名的编码。另外一种是在不应该带签名的文件里面，使用了带签名的 UTF-8 编码，使文件有两层 BOM 信息，从而导致乱码。</p>
-<p>上面问题出现的原因，是因为这个文件没有带 BOM 信息，导致应用程序无法识别，而出现乱码。</p>
-<h1 id="解决办法-1"><a href="#解决办法-1" class="headerlink" title="解决办法"></a>解决办法</h1><ol>
-<li>在 VS 里，添加高级保存选项。<br>A.选择工具 → 自定义 → 打开命令 → 菜单栏选择【文件】<br><img src="https://img-blog.csdnimg.cn/20210115234201864.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpbnN1aTQzNTA=,size_16,color_FFFFFF,t_70#align=left&display=inline&height=672&margin=%5Bobject%20Object%5D&originHeight=672&originWidth=645&status=uploading&style=none&width=645"></li>
-</ol>
-<p>B.点击【添加命令】，选中【文件】，选择【高级保存选项】。<br><img src="https://img-blog.csdnimg.cn/20210115234039440.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpbnN1aTQzNTA=,size_16,color_FFFFFF,t_70#align=left&display=inline&height=669&margin=%5Bobject%20Object%5D&originHeight=669&originWidth=797&status=uploading&style=none&width=797"></p>
-<p>2.在菜单栏里，点击文件，打开高级保存选项。选择编码格式为【Unicode（UTF-8 带签名）】，点击确定。<br><img src="https://img-blog.csdnimg.cn/20210114165654524.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpbnN1aTQzNTA=,size_16,color_FFFFFF,t_70#align=left&display=inline&height=305&margin=%5Bobject%20Object%5D&originHeight=305&originWidth=588&status=uploading&style=none&width=588"> 3.修改完成后，中文显示正常，如下图。中文乱码问题解决。<br><img src="https://img-blog.csdnimg.cn/20210114165812107.png#align=left&display=inline&height=47&margin=%5Bobject%20Object%5D&originHeight=47&originWidth=415&status=uploading&style=none&width=415"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/13/yuque/ThinkPHP%20%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E5%B1%82%E6%9E%B6%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -346,7 +271,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-03-13 16:38:13 / 修改时间：21:43:12" itemprop="dateCreated datePublished" datetime="2021-03-13T16:38:13+08:00">2021-03-13</time>
+              <time title="创建时间：2021-03-13 16:38:13 / 修改时间：21:51:50" itemprop="dateCreated datePublished" datetime="2021-03-13T16:38:13+08:00">2021-03-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -423,7 +348,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-03-13 13:38:13 / 修改时间：21:43:11" itemprop="dateCreated datePublished" datetime="2021-03-13T13:38:13+08:00">2021-03-13</time>
+              <time title="创建时间：2021-03-13 13:38:13 / 修改时间：21:51:49" itemprop="dateCreated datePublished" datetime="2021-03-13T13:38:13+08:00">2021-03-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -468,7 +393,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/13/yuque/%E5%BD%BB%E5%BA%95%E8%A7%A3%E5%86%B3VisualSutdio%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/11/yuque/git%20clone%E5%87%BA%E7%8E%B0%EF%BC%9ATimed%20out/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avapng.png">
@@ -482,7 +407,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/03/13/yuque/%E5%BD%BB%E5%BA%95%E8%A7%A3%E5%86%B3VisualSutdio%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">彻底解决VisualSutdio中文乱码的问题</a>
+            <a href="/2021/03/11/yuque/git%20clone%E5%87%BA%E7%8E%B0%EF%BC%9ATimed%20out/" class="post-title-link" itemprop="url">git clone出现：Timed out</a>
         </h2>
 
         <div class="post-meta">
@@ -491,10 +416,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-03-13 13:38:13 / 修改时间：21:43:11" itemprop="dateCreated datePublished" datetime="2021-03-13T13:38:13+08:00">2021-03-13</time>
+              <time title="创建时间：2021-03-11 15:02:34" itemprop="dateCreated datePublished" datetime="2021-03-11T15:02:34+08:00">2021-03-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-13 21:51:50" itemprop="dateModified" datetime="2021-03-13T21:51:50+08:00">2021-03-13</time>
+              </span>
 
           
 
@@ -507,24 +438,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>在使用 VS 写 QT 的 C++项目的时候，直接输入中文，但是一直乱码。如下图。后来找了一圈，发现 windows 默认使用的格式是 GBK/GB2312/GB18030。如果要输入中文，需要对含中文的字符串进行转码。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642969135-07ef9c88-f403-4607-98de-091678916be1.png#align=left&display=inline&height=28&margin=%5Bobject%20Object%5D&originHeight=28&originWidth=416&size=0&status=done&style=none&width=416"></p>
-<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>要按照下面的方式来写。</p>
-<p>fromLocal8Bit 的作用是使 GBK/GB2312/GB18030 格式的字符串转换成 Unicode 格式。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dock-&gt;setWindowTitle(QString::fromLocal8Bit(<span class="string">&quot;课程列表&quot;</span>));</span><br></pre></td></tr></table></figure>
-<h1 id="新出现的问题"><a href="#新出现的问题" class="headerlink" title="新出现的问题"></a>新出现的问题</h1><p>过了一段时间，结果按照上面的方式写，又出现中文乱码,如下图。理论上来说，同样的代码执行结果应该是完全一样的。所以可能不是代码的问题，而是别的问题。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642969103-535f6c68-66fd-45d7-b121-341def210e65.png#align=left&display=inline&height=48&margin=%5Bobject%20Object%5D&originHeight=48&originWidth=411&size=0&status=done&style=none&width=411"></p>
-<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p>经过排查和网上搜索相关的文章，发现问题的原因果然不在代码上，而文件的保存格式有问题。通常代码里面中文的编码格式会设置成 UTF-8。但是 UTF-8 也分为两种，一种带签名，一种不带签名。带签名的会有 BOM 信息，来告诉应用程序所用的是 UTF-8 编码。</p>
-<ul>
-<li>UTF-8（带签名）：带有 BOM 信息，可以被应用程序识别为 UTF-8 编码。</li>
-<li>UTF-8（不带签名）：不带有 BOM 信息，不能被应用程序识别为 UTF-8 编码。在被其他文件 include 时，需要使用这种。</li>
-</ul>
-<p>因为编码问题而出现乱码的情况，无非也就两种：一种是在应该使用 UTF-8（带签名）的文件里使用不带签名的编码。另外一种是在不应该带签名的文件里面，使用了带签名的 UTF-8 编码，使文件有两层 BOM 信息，从而导致乱码。</p>
-<p>上面问题出现的原因，是因为这个文件没有带 BOM 信息，导致应用程序无法识别，而出现乱码。</p>
-<h1 id="解决办法-1"><a href="#解决办法-1" class="headerlink" title="解决办法"></a>解决办法</h1><ol>
-<li>在 VS 里，添加高级保存选项。<br>A.选择工具 → 自定义 → 打开命令 → 菜单栏选择【文件】<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642969107-2494b2c3-4987-4827-af42-28ed80c8e79e.png#align=left&display=inline&height=672&margin=%5Bobject%20Object%5D&originHeight=672&originWidth=645&size=0&status=done&style=none&width=645"></li>
-</ol>
-<p>B.点击【添加命令】，选中【文件】，选择【高级保存选项】。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642969229-459add79-998c-4826-acdb-524c3a6a639d.png#align=left&display=inline&height=669&margin=%5Bobject%20Object%5D&originHeight=669&originWidth=797&size=0&status=done&style=none&width=797"></p>
-<p>2.在菜单栏里，点击文件，打开高级保存选项。选择编码格式为【Unicode（UTF-8 带签名）】，点击确定。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642969090-5008f77a-792e-480c-8ead-daa3e78b7cae.png#align=left&display=inline&height=305&margin=%5Bobject%20Object%5D&originHeight=305&originWidth=588&size=0&status=done&style=none&width=588"> 3.修改完成后，中文显示正常，如下图。中文乱码问题解决。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642969470-08df46e7-73c9-4f5f-aca1-9184d46757f7.png#align=left&display=inline&height=47&margin=%5Bobject%20Object%5D&originHeight=47&originWidth=415&size=0&status=done&style=none&width=415"></p>
-
+          <p>tags: [Hexo]<br>tags:[“爬坑记”]<br>categories: [“Git”]<br>date: 2021-03-10 10:43:50</p>
+<hr>
+<h1 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h1><p>克隆 git 的一个仓库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;**</span><br></pre></td></tr></table></figure>
+<p>莫名其妙的出现下面这个错误：<br>fatal: unable to access ‘<a target="_blank" rel="noopener" href="https://github.com/**/&#39;">https://github.com/**/&#39;</a>: Failed to connect to github.com port 443:</p>
+<h1 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h1><p>把 https 换成 git，就好了。参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/gbz3300255/article/details/97103621">https://blog.csdn.net/gbz3300255/article/details/97103621</a><br>换成下面这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git:&#x2F;&#x2F;github.com&#x2F;**</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -574,7 +494,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-13 21:42:33" itemprop="dateModified" datetime="2021-03-13T21:42:33+08:00">2021-03-13</time>
+                <time title="修改时间：2021-03-13 21:51:07" itemprop="dateModified" datetime="2021-03-13T21:51:07+08:00">2021-03-13</time>
               </span>
 
           
@@ -639,7 +559,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-13 21:43:11" itemprop="dateModified" datetime="2021-03-13T21:43:11+08:00">2021-03-13</time>
+                <time title="修改时间：2021-03-13 21:51:49" itemprop="dateModified" datetime="2021-03-13T21:51:49+08:00">2021-03-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -666,6 +586,96 @@
 <h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><ol>
 <li>在 frontend/obs 里，找到 CmakeLists.txt 文件。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642759871-6a466afd-1fb1-45ea-8721-3916f658d1f4.png#align=left&display=inline&height=724&margin=%5Bobject%20Object%5D&originHeight=724&originWidth=455&size=0&status=done&style=none&width=455"> 2.添加 xx 新文件.cpp。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642759765-1b937109-5dcb-4cb2-a852-057be95a60b4.png#align=left&display=inline&height=603&margin=%5Bobject%20Object%5D&originHeight=603&originWidth=593&size=0&status=done&style=none&width=593"> 3.添加 xx 新文件.h。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642759857-8a8c4349-ea42-4a87-91b3-2a02b840506c.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&originHeight=481&originWidth=455&size=0&status=done&style=none&width=455"> 4.如果有 UI 文件，还需要添加 UI 文件。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642759923-4a3e285f-94d0-4ac3-b7a4-c65cd4b5d696.png#align=left&display=inline&height=480&margin=%5Bobject%20Object%5D&originHeight=480&originWidth=535&size=0&status=done&style=none&width=535"> 5.重现调试项目，即可。</li>
 </ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/26/yuque/%E5%BD%BB%E5%BA%95%E8%A7%A3%E5%86%B3VisualSutdio%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avapng.png">
+      <meta itemprop="name" content="邓子扬">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓子扬的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/26/yuque/%E5%BD%BB%E5%BA%95%E8%A7%A3%E5%86%B3VisualSutdio%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">彻底解决VisualSutdio中文乱码的问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-26 15:28:13" itemprop="dateCreated datePublished" datetime="2021-01-26T15:28:13+08:00">2021-01-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-13 21:51:49" itemprop="dateModified" datetime="2021-03-13T21:51:49+08:00">2021-03-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OBS/" itemprop="url" rel="index"><span itemprop="name">OBS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>在使用 VS 写 QT 的 C++项目的时候，直接输入中文，但是一直乱码。如下图。后来找了一圈，发现 windows 默认使用的格式是 GBK/GB2312/GB18030。如果要输入中文，需要对含中文的字符串进行转码。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642969135-07ef9c88-f403-4607-98de-091678916be1.png#align=left&display=inline&height=28&margin=%5Bobject%20Object%5D&originHeight=28&originWidth=416&size=0&status=done&style=none&width=416"></p>
+<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>要按照下面的方式来写。</p>
+<p>fromLocal8Bit 的作用是使 GBK/GB2312/GB18030 格式的字符串转换成 Unicode 格式。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dock-&gt;setWindowTitle(QString::fromLocal8Bit(<span class="string">&quot;课程列表&quot;</span>));</span><br></pre></td></tr></table></figure>
+<h1 id="新出现的问题"><a href="#新出现的问题" class="headerlink" title="新出现的问题"></a>新出现的问题</h1><p>过了一段时间，结果按照上面的方式写，又出现中文乱码,如下图。理论上来说，同样的代码执行结果应该是完全一样的。所以可能不是代码的问题，而是别的问题。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642969103-535f6c68-66fd-45d7-b121-341def210e65.png#align=left&display=inline&height=48&margin=%5Bobject%20Object%5D&originHeight=48&originWidth=411&size=0&status=done&style=none&width=411"></p>
+<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p>经过排查和网上搜索相关的文章，发现问题的原因果然不在代码上，而文件的保存格式有问题。通常代码里面中文的编码格式会设置成 UTF-8。但是 UTF-8 也分为两种，一种带签名，一种不带签名。带签名的会有 BOM 信息，来告诉应用程序所用的是 UTF-8 编码。</p>
+<ul>
+<li>UTF-8（带签名）：带有 BOM 信息，可以被应用程序识别为 UTF-8 编码。</li>
+<li>UTF-8（不带签名）：不带有 BOM 信息，不能被应用程序识别为 UTF-8 编码。在被其他文件 include 时，需要使用这种。</li>
+</ul>
+<p>因为编码问题而出现乱码的情况，无非也就两种：一种是在应该使用 UTF-8（带签名）的文件里使用不带签名的编码。另外一种是在不应该带签名的文件里面，使用了带签名的 UTF-8 编码，使文件有两层 BOM 信息，从而导致乱码。</p>
+<p>上面问题出现的原因，是因为这个文件没有带 BOM 信息，导致应用程序无法识别，而出现乱码。</p>
+<h1 id="解决办法-1"><a href="#解决办法-1" class="headerlink" title="解决办法"></a>解决办法</h1><ol>
+<li>在 VS 里，添加高级保存选项。<br>A.选择工具 → 自定义 → 打开命令 → 菜单栏选择【文件】<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642969107-2494b2c3-4987-4827-af42-28ed80c8e79e.png#align=left&display=inline&height=672&margin=%5Bobject%20Object%5D&originHeight=672&originWidth=645&size=0&status=done&style=none&width=645"></li>
+</ol>
+<p>B.点击【添加命令】，选中【文件】，选择【高级保存选项】。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642969229-459add79-998c-4826-acdb-524c3a6a639d.png#align=left&display=inline&height=669&margin=%5Bobject%20Object%5D&originHeight=669&originWidth=797&size=0&status=done&style=none&width=797"></p>
+<p>2.在菜单栏里，点击文件，打开高级保存选项。选择编码格式为【Unicode（UTF-8 带签名）】，点击确定。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642969090-5008f77a-792e-480c-8ead-daa3e78b7cae.png#align=left&display=inline&height=305&margin=%5Bobject%20Object%5D&originHeight=305&originWidth=588&size=0&status=done&style=none&width=588"> 3.修改完成后，中文显示正常，如下图。中文乱码问题解决。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642969470-08df46e7-73c9-4f5f-aca1-9184d46757f7.png#align=left&display=inline&height=47&margin=%5Bobject%20Object%5D&originHeight=47&originWidth=415&size=0&status=done&style=none&width=415"></p>
 
       
     </div>
@@ -716,7 +726,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-13 21:43:11" itemprop="dateModified" datetime="2021-03-13T21:43:11+08:00">2021-03-13</time>
+                <time title="修改时间：2021-03-13 21:51:49" itemprop="dateModified" datetime="2021-03-13T21:51:49+08:00">2021-03-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -749,83 +759,6 @@
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/10/05/yuque/git%20clone%E5%87%BA%E7%8E%B0%EF%BC%9ATimed%20out/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avapng.png">
-      <meta itemprop="name" content="邓子扬">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邓子扬的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/05/yuque/git%20clone%E5%87%BA%E7%8E%B0%EF%BC%9ATimed%20out/" class="post-title-link" itemprop="url">git clone出现：Timed out</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-10-05 10:43:50" itemprop="dateCreated datePublished" datetime="2018-10-05T10:43:50+08:00">2018-10-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-13 21:43:12" itemprop="dateModified" datetime="2021-03-13T21:43:12+08:00">2021-03-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">教程</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h1><p>克隆 git 的一个仓库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;**</span><br></pre></td></tr></table></figure>
-<p>莫名其妙的出现下面这个错误：<br>fatal: unable to access ‘<a target="_blank" rel="noopener" href="https://github.com/**/&#39;">https://github.com/**/&#39;</a>: Failed to connect to github.com port 443:</p>
-<h1 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h1><p>把 https 换成 git，就好了。参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/gbz3300255/article/details/97103621">https://blog.csdn.net/gbz3300255/article/details/97103621</a><br>换成下面这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git:&#x2F;&#x2F;github.com&#x2F;**</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -908,20 +841,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
