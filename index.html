@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">11</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">10</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a>
 
   </li>
         <li class="menu-item menu-item-schedule">
@@ -166,6 +166,75 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/15/yuque/%E8%B4%AD%E7%89%A9%E8%BD%A6+%E7%BB%93%E7%AE%97%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E6%A2%B3%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avapng.png">
+      <meta itemprop="name" content="邓子扬">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓子扬的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/15/yuque/%E8%B4%AD%E7%89%A9%E8%BD%A6+%E7%BB%93%E7%AE%97%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E6%A2%B3%E7%90%86/" class="post-title-link" itemprop="url">购物车+结算业务逻辑梳理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-15 21:53:51 / 修改时间：22:05:44" itemprop="dateCreated datePublished" datetime="2021-03-15T21:53:51+08:00">2021-03-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>电商里面都会有类似加入购物车，然后结算的业务。一般是会属于系统里面非常复杂的模块，所以想在这里，从业务逻辑的角度梳理一下。<br>这条业务完整的逻辑是：选择商品 → 加入购物车 → 订单结算 → 结算成功。<br>如果走一切正常的逻辑，还是挺简单的，无非是在数据库里面加一条订单结算的记录。但是复杂的地方在于：商品和结算。</p>
+<h1 id="商品"><a href="#商品" class="headerlink" title="商品"></a>商品</h1><p>电商平台中的商品，会有许多属性，包括：商品名、价格、单位、库存、产地等等。对商品的操作也有很多，包括：修改商品名、修改价格、变更库存、上/下架。商品的属性和操作都会影响到订单结算，所以在订单结算前，需要对待结算单里面的商品，进行多重判断，导致整个业务逻辑非常复杂。</p>
+<h1 id="结算"><a href="#结算" class="headerlink" title="结算"></a>结算</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/15/yuque/TP%E4%B8%AD%E5%A6%82%E4%BD%95%E5%A2%9E%E5%8A%A0%E5%89%8D%E7%BD%AE%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -191,7 +260,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-03-15 17:17:54 / 修改时间：21:42:50" itemprop="dateCreated datePublished" datetime="2021-03-15T17:17:54+08:00">2021-03-15</time>
+              <time title="创建时间：2021-03-15 17:17:54 / 修改时间：22:05:44" itemprop="dateCreated datePublished" datetime="2021-03-15T17:17:54+08:00">2021-03-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,7 +342,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 21:42:50" itemprop="dateModified" datetime="2021-03-15T21:42:50+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 22:05:44" itemprop="dateModified" datetime="2021-03-15T22:05:44+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -355,7 +424,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 21:42:50" itemprop="dateModified" datetime="2021-03-15T21:42:50+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 22:05:44" itemprop="dateModified" datetime="2021-03-15T22:05:44+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -442,7 +511,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 21:42:50" itemprop="dateModified" datetime="2021-03-15T21:42:50+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 22:05:44" itemprop="dateModified" datetime="2021-03-15T22:05:44+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -523,7 +592,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 21:42:50" itemprop="dateModified" datetime="2021-03-15T21:42:50+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 22:05:44" itemprop="dateModified" datetime="2021-03-15T22:05:44+08:00">2021-03-15</time>
               </span>
 
           
@@ -593,7 +662,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 21:42:06" itemprop="dateModified" datetime="2021-03-15T21:42:06+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 22:05:09" itemprop="dateModified" datetime="2021-03-15T22:05:09+08:00">2021-03-15</time>
               </span>
 
           
@@ -658,7 +727,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 21:42:50" itemprop="dateModified" datetime="2021-03-15T21:42:50+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 22:05:44" itemprop="dateModified" datetime="2021-03-15T22:05:44+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -739,7 +808,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 21:42:50" itemprop="dateModified" datetime="2021-03-15T21:42:50+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 22:05:44" itemprop="dateModified" datetime="2021-03-15T22:05:44+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -823,7 +892,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 21:42:50" itemprop="dateModified" datetime="2021-03-15T21:42:50+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 22:05:44" itemprop="dateModified" datetime="2021-03-15T22:05:44+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -870,90 +939,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/09/21/yuque/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avapng.png">
-      <meta itemprop="name" content="邓子扬">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邓子扬的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/21/yuque/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/" class="post-title-link" itemprop="url">浏览器缓存</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-09-21 13:38:13" itemprop="dateCreated datePublished" datetime="2019-09-21T13:38:13+08:00">2019-09-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 21:42:50" itemprop="dateModified" datetime="2021-03-15T21:42:50+08:00">2021-03-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="什么是浏览器缓存？"><a href="#什么是浏览器缓存？" class="headerlink" title="什么是浏览器缓存？"></a>什么是浏览器缓存？</h2><p>为了节约网络的资源，浏览器在用户的磁盘上对最近请求过的文档进行存储。当再次访问时，就可以直接从本地磁盘中获取，这样就可以加速页面的阅览，并且缓解一部分服务器的压力。<br>浏览器缓存的缓存机制是通过 Http 协议来实现的。</p>
-<h2 id="浏览器缓存存在哪？"><a href="#浏览器缓存存在哪？" class="headerlink" title="浏览器缓存存在哪？"></a>浏览器缓存存在哪？</h2><p>浏览器缓存的位置可以分为四种：<br>1.Service Worker<br>2.Memory Cache<br>3.Disk Cache<br>4.Push Cache</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/09/21/yuque/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1020,7 +1010,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1033,7 +1023,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
