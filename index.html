@@ -166,7 +166,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/15/yuque/%E8%B4%AD%E7%89%A9%E8%BD%A6+%E7%BB%93%E7%AE%97%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E6%A2%B3%E7%90%86/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/15/yuque/%E8%B4%AD%E7%89%A9%E8%BD%A6+%E7%BB%93%E7%AE%97%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E6%A2%B3%E7%90%86%EF%BC%88%E8%8D%89%E7%A8%BF%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avapng.png">
@@ -180,7 +180,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/03/15/yuque/%E8%B4%AD%E7%89%A9%E8%BD%A6+%E7%BB%93%E7%AE%97%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E6%A2%B3%E7%90%86/" class="post-title-link" itemprop="url">购物车+结算业务逻辑梳理</a>
+            <a href="/2021/03/15/yuque/%E8%B4%AD%E7%89%A9%E8%BD%A6+%E7%BB%93%E7%AE%97%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E6%A2%B3%E7%90%86%EF%BC%88%E8%8D%89%E7%A8%BF%EF%BC%89/" class="post-title-link" itemprop="url">购物车+结算业务逻辑梳理</a>
         </h2>
 
         <div class="post-meta">
@@ -191,7 +191,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-03-15 21:53:51 / 修改时间：22:05:44" itemprop="dateCreated datePublished" datetime="2021-03-15T21:53:51+08:00">2021-03-15</time>
+              <time title="创建时间：2021-03-15 21:53:51 / 修改时间：22:31:12" itemprop="dateCreated datePublished" datetime="2021-03-15T21:53:51+08:00">2021-03-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -215,8 +215,11 @@
 
       
           <p>电商里面都会有类似加入购物车，然后结算的业务。一般是会属于系统里面非常复杂的模块，所以想在这里，从业务逻辑的角度梳理一下。<br>这条业务完整的逻辑是：选择商品 → 加入购物车 → 订单结算 → 结算成功。<br>如果走一切正常的逻辑，还是挺简单的，无非是在数据库里面加一条订单结算的记录。但是复杂的地方在于：商品和结算。</p>
-<h1 id="商品"><a href="#商品" class="headerlink" title="商品"></a>商品</h1><p>电商平台中的商品，会有许多属性，包括：商品名、价格、单位、库存、产地等等。对商品的操作也有很多，包括：修改商品名、修改价格、变更库存、上/下架。商品的属性和操作都会影响到订单结算，所以在订单结算前，需要对待结算单里面的商品，进行多重判断，导致整个业务逻辑非常复杂。</p>
-<h1 id="结算"><a href="#结算" class="headerlink" title="结算"></a>结算</h1>
+<h1 id="商品"><a href="#商品" class="headerlink" title="商品"></a>商品</h1><p>电商平台中的商品，会有许多属性，包括：<strong>商品名、价格、单位、库存、产地</strong>等等。对商品的操作也有很多，包括：<strong>修改商品名、修改价格、变更库存、上/下架</strong>。商品的属性和操作都会影响到订单结算，所以在订单结算前，需要对待结算单里面的商品，进行多重判断，导致整个业务逻辑非常复杂。</p>
+<h1 id="结算"><a href="#结算" class="headerlink" title="结算"></a>结算</h1><p>小程序进行微信支付的逻辑如下图。可以简单的理解为：客户端生成支付订单 → 服务器调用微信支付系统 → 微信支付系统生成预付单给服务器 → 客户端获取预付单的信息 → 客户完成支付 → 服务器异步返回支付结果。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615817170407-dbd1f902-d9d4-40d6-a7ac-6df12defe35c.png#align=left&display=inline&height=896&margin=%5Bobject%20Object%5D&originHeight=896&originWidth=800&size=0&status=done&style=none&width=800"></p>
+<p>其中，比较容易出问题的点在于：客户支付可能成功，也可能失败（比如客户主动取消了支付）；微信支付系统是异步返回结果给服务器，所以不是调用支付完就可以立马得到支付结果。</p>
+
       
     </div>
 
@@ -260,7 +263,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-03-15 17:17:54 / 修改时间：22:05:44" itemprop="dateCreated datePublished" datetime="2021-03-15T17:17:54+08:00">2021-03-15</time>
+              <time title="创建时间：2021-03-15 17:17:54 / 修改时间：22:31:12" itemprop="dateCreated datePublished" datetime="2021-03-15T17:17:54+08:00">2021-03-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -342,7 +345,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 22:05:44" itemprop="dateModified" datetime="2021-03-15T22:05:44+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 22:31:12" itemprop="dateModified" datetime="2021-03-15T22:31:12+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -424,7 +427,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 22:05:44" itemprop="dateModified" datetime="2021-03-15T22:05:44+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 22:31:12" itemprop="dateModified" datetime="2021-03-15T22:31:12+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -511,7 +514,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 22:05:44" itemprop="dateModified" datetime="2021-03-15T22:05:44+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 22:31:12" itemprop="dateModified" datetime="2021-03-15T22:31:12+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -592,7 +595,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 22:05:44" itemprop="dateModified" datetime="2021-03-15T22:05:44+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 22:31:12" itemprop="dateModified" datetime="2021-03-15T22:31:12+08:00">2021-03-15</time>
               </span>
 
           
@@ -662,7 +665,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 22:05:09" itemprop="dateModified" datetime="2021-03-15T22:05:09+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 22:30:30" itemprop="dateModified" datetime="2021-03-15T22:30:30+08:00">2021-03-15</time>
               </span>
 
           
@@ -727,7 +730,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 22:05:44" itemprop="dateModified" datetime="2021-03-15T22:05:44+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 22:31:12" itemprop="dateModified" datetime="2021-03-15T22:31:12+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -808,7 +811,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 22:05:44" itemprop="dateModified" datetime="2021-03-15T22:05:44+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 22:31:12" itemprop="dateModified" datetime="2021-03-15T22:31:12+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -892,7 +895,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 22:05:44" itemprop="dateModified" datetime="2021-03-15T22:05:44+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 22:31:12" itemprop="dateModified" datetime="2021-03-15T22:31:12+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
