@@ -27,17 +27,17 @@
 <meta property="og:site_name" content="邓子扬的博客">
 <meta property="og:description" content="一、代码操作数据库的核心操作数据库的过程核心有两个步骤：  连接数据库 操作数据库  如果只有一种数据库，比如 Mysql，那么直接用面向过程的思路，一步步编写下去即可。但是连接数据库和操作数据库，一定会有的需求：需要连接不同的数据库，并且不同的数据库的操作方法是不一样的。如果按照面向过程的思想，每一个数据库都需要单独写一套连接数据库和操作数据库的方法，会非常麻烦。 这个时候，使用面向对象的封装，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/416423/1615631218175-3c8aa65a-1792-40d5-a5bc-d853eb253b15.png#align=left&display=inline&height=368&margin=%5Bobject%20Object%5D&name=image.png&originHeight=463&originWidth=435&size=21050&status=done&style=none&width=346">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/416423/1615632544897-9741b401-ddee-4bf4-b26e-61c461d65d97.png#align=left&display=inline&height=312&margin=%5Bobject%20Object%5D&name=image.png&originHeight=624&originWidth=866&size=52639&status=done&style=none&width=433">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/416423/1615630858522-0268724c-16e0-412d-b258-d44f403739ae.png#align=left&display=inline&height=164&margin=%5Bobject%20Object%5D&name=image.png&originHeight=328&originWidth=422&size=15113&status=done&style=none&width=211">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/416423/1615633149226-2ef9ad4e-1780-46d1-8640-57850cf04391.png#align=left&display=inline&height=173&margin=%5Bobject%20Object%5D&name=image.png&originHeight=345&originWidth=407&size=15155&status=done&style=none&width=203.5">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/416423/1615789468173-97c68241-9c37-4b47-9664-0f525cf98226.png#align=left&display=inline&height=454&margin=%5Bobject%20Object%5D&originHeight=454&originWidth=429&size=0&status=done&style=none&width=429">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/416423/1615789487099-36c3129c-8f4f-4a15-89d1-256d69bd9f12.png#align=left&display=inline&height=660&margin=%5Bobject%20Object%5D&originHeight=660&originWidth=918&size=0&status=done&style=none&width=918">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/416423/1615789510557-54e0a00c-cf6d-4f80-b5f8-788f3c9725d1.png#align=left&display=inline&height=405&margin=%5Bobject%20Object%5D&originHeight=405&originWidth=519&size=0&status=done&style=none&width=519">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/416423/1615789534617-54091a74-866e-45e2-936a-ad126be7b161.png#align=left&display=inline&height=431&margin=%5Bobject%20Object%5D&originHeight=431&originWidth=510&size=0&status=done&style=none&width=510">
 <meta property="article:published_time" content="2021-03-13T08:38:13.000Z">
-<meta property="article:modified_time" content="2021-03-15T06:21:11.820Z">
+<meta property="article:modified_time" content="2021-03-15T06:30:02.040Z">
 <meta property="article:author" content="邓子扬">
 <meta property="article:tag" content="ThinkPHP">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2021/png/416423/1615631218175-3c8aa65a-1792-40d5-a5bc-d853eb253b15.png#align=left&display=inline&height=368&margin=%5Bobject%20Object%5D&name=image.png&originHeight=463&originWidth=435&size=21050&status=done&style=none&width=346">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2021/png/416423/1615789468173-97c68241-9c37-4b47-9664-0f525cf98226.png#align=left&display=inline&height=454&margin=%5Bobject%20Object%5D&originHeight=454&originWidth=429&size=0&status=done&style=none&width=429">
 
 <link rel="canonical" href="http://example.com/2021/03/13/yuque/ThinkPHP%20%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E5%B1%82%E6%9E%B6%E6%9E%84/">
 
@@ -208,7 +208,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 14:21:11" itemprop="dateModified" datetime="2021-03-15T14:21:11+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 14:30:02" itemprop="dateModified" datetime="2021-03-15T14:30:02+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -245,8 +245,10 @@
 </ul>
 <p>如果只有一种数据库，比如 Mysql，那么直接用面向过程的思路，一步步编写下去即可。但是连接数据库和操作数据库，一定会有的需求：需要连接不同的数据库，并且不同的数据库的操作方法是不一样的。如果按照面向过程的思想，每一个数据库都需要单独写一套连接数据库和操作数据库的方法，会非常麻烦。</p>
 <p>这个时候，使用面向对象的封装，就可以很好的解决这个问题。把连接数据库和操作数据库的方法进行封装，不管是连接什么数据库还是这个数据库使用什么的操作方法，都使用同一套方法，把不同数据库的差异性，封装起来。TP 的数据层和数据连接层使用的就是这个方法。</p>
+<a id="more"></a>
+
 <h1 id="二、TP-数据层的具体实现"><a href="#二、TP-数据层的具体实现" class="headerlink" title="二、TP 数据层的具体实现"></a>二、TP 数据层的具体实现</h1><p>Db 是数据库操作的入口，TP 里面所有关于数据库的操作，都是使用 Db 这个类来实现的，这个类在 thinkphp/library/Db.php 这个文件里面。<br>比如 TP 里面执行某条 SQL 语句，会使用这种方式。<br>$result = Db::query(‘select * from banner_item where banner_id=?’,[$id]);</p>
-<p>TP 里面数据库的实现，主要是依靠下面这些文件，都在 db 这个目录下。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615631218175-3c8aa65a-1792-40d5-a5bc-d853eb253b15.png#align=left&display=inline&height=368&margin=%5Bobject%20Object%5D&name=image.png&originHeight=463&originWidth=435&size=21050&status=done&style=none&width=346" alt="image.png"><br><strong>它们之间的关系：如下图。</strong><br><strong><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615632544897-9741b401-ddee-4bf4-b26e-61c461d65d97.png#align=left&display=inline&height=312&margin=%5Bobject%20Object%5D&name=image.png&originHeight=624&originWidth=866&size=52639&status=done&style=none&width=433" alt="image.png"></strong><br><strong>Connection：</strong>用来连接数据库和执行 SQL。Connection 的下一层是 connector，connector 具有不同数据库的连接类（如下图），connection 根据 database.php 里面的配置，调用 connector 不同的数据库连接类，就可以实现对连接不同数据库的封装。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615630858522-0268724c-16e0-412d-b258-d44f403739ae.png#align=left&display=inline&height=164&margin=%5Bobject%20Object%5D&name=image.png&originHeight=328&originWidth=422&size=15113&status=done&style=none&width=211" alt="image.png"><br><strong>Builder：</strong>用来将 Query 查询器的标准化 API，转换成原生 SQL。转换成 SQL 之后，再调用 Connection 来执行，也就是上面的过程。Builder 下面也有很多不同的文件，用于执行不同的 SQL。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615633149226-2ef9ad4e-1780-46d1-8640-57850cf04391.png#align=left&display=inline&height=173&margin=%5Bobject%20Object%5D&name=image.png&originHeight=345&originWidth=407&size=15155&status=done&style=none&width=203.5" alt="image.png"></p>
+<p>TP 里面数据库的实现，主要是依靠下面这些文件，都在 db 这个目录下。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615789468173-97c68241-9c37-4b47-9664-0f525cf98226.png#align=left&display=inline&height=454&margin=%5Bobject%20Object%5D&originHeight=454&originWidth=429&size=0&status=done&style=none&width=429"><br><strong>它们之间的关系：如下图。</strong><br><strong><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615789487099-36c3129c-8f4f-4a15-89d1-256d69bd9f12.png#align=left&display=inline&height=660&margin=%5Bobject%20Object%5D&originHeight=660&originWidth=918&size=0&status=done&style=none&width=918"><br>**Connection：</strong>用来连接数据库和执行 SQL。Connection 的下一层是 connector，connector 具有不同数据库的连接类（如下图），connection 根据 database.php 里面的配置，调用 connector 不同的数据库连接类，就可以实现对连接不同数据库的封装。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615789510557-54e0a00c-cf6d-4f80-b5f8-788f3c9725d1.png#align=left&display=inline&height=405&margin=%5Bobject%20Object%5D&originHeight=405&originWidth=519&size=0&status=done&style=none&width=519"><br>*<em>Builder：\</em>*用来将 Query 查询器的标准化 API，转换成原生 SQL。转换成 SQL 之后，再调用 Connection 来执行，也就是上面的过程。Builder 下面也有很多不同的文件，用于执行不同的 SQL。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615789534617-54091a74-866e-45e2-936a-ad126be7b161.png#align=left&display=inline&height=431&margin=%5Bobject%20Object%5D&originHeight=431&originWidth=510&size=0&status=done&style=none&width=510"></p>
 <p>以上，就是 TP 中，解决使用同一套方法，来实现连接和操作不同数据库的过程。<br>不得不说，面向对象太强了！！<br>这其实是一个从具体到抽象的过程，代码的抽象程度越高，适用的范围也就越广。以前会奇怪，为什么有的代码写的这么绕，为什么明明每行代码单独都看的懂，业务逻辑也明白，但是整体看就是看不懂，其实就是因为代码的抽象程度很高，需要从更高的维度去理解。学到了！！</p>
 <h2 id=""><a href="#" class="headerlink" title=""></a></h2>
     </div>

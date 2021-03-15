@@ -197,7 +197,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 14:21:11" itemprop="dateModified" datetime="2021-03-15T14:21:11+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 14:30:01" itemprop="dateModified" datetime="2021-03-15T14:30:01+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -221,10 +221,15 @@
 
       
           <p>简单记录下之前学习 Git 的过程。<br>最最开始，使用的是 SVN 来做版本控制，因为可以理解成只有一个版本，所以操作什么的都很简单。后来接触到 Git，也看了不少教程，但是还是比较懵逼。</p>
-<p>从会几个简单的 Git 命令，到真正的弄明白 Git 的操作流程，是看懂了这个图。这个图包括了 Git 的所有基本用法，并且明白 Git 并不是只是学几个命令，而是一个工作流。<br>什么是工作流？就是从你开始写代码，到最终代码上线，这一整个流程。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615643803222-2619965d-3dbf-42d1-ae87-1d03492a753e.png#align=left&display=inline&height=223&margin=%5Bobject%20Object%5D&name=image.png&originHeight=334&originWidth=693&size=92277&status=done&style=none&width=462" alt="image.png"></p>
-<h2 id="Git-的工作流是什么样的？"><a href="#Git-的工作流是什么样的？" class="headerlink" title="Git 的工作流是什么样的？"></a>Git 的工作流是什么样的？</h2><p>首先 Git 把放代码的地方叫仓库。仓库分为本地仓库和远程仓库。我们写完代码，想把代码提交到远程仓库上，并不是一步到位，而是必须先把代码提交到本地仓库，然后再把本地仓库的代码提交到远程仓库上。这就是“推”代码的过程。</p>
-<p>而“拉”代码可以一步到位，使用 Git pull origin master，直接把远程仓库的分支拉到本地。<br>如果有多个人合作开发，那么每个人会基于主分支，新建一个 dev 分支，待写完代码后，把 dev 分支再合并到主分支，然后推到远程仓库。什么是分支？可以理解为版本，一个版本就是一个分支。</p>
-
+<p>从会几个简单的 Git 命令，到真正的弄明白 Git 的操作流程，是看懂了这个图。这个图包括了 Git 的所有基本用法，并且明白 Git 并不是只是学几个命令，而是一个工作流。<br>什么是工作流？就是从你开始写代码，到最终代码上线，这一整个流程。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/13/yuque/Git%E5%B7%A5%E4%BD%9C%E6%B5%81/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -274,7 +279,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 14:21:11" itemprop="dateModified" datetime="2021-03-15T14:21:11+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 14:30:02" itemprop="dateModified" datetime="2021-03-15T14:30:02+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -304,10 +309,14 @@
 </ul>
 <p>如果只有一种数据库，比如 Mysql，那么直接用面向过程的思路，一步步编写下去即可。但是连接数据库和操作数据库，一定会有的需求：需要连接不同的数据库，并且不同的数据库的操作方法是不一样的。如果按照面向过程的思想，每一个数据库都需要单独写一套连接数据库和操作数据库的方法，会非常麻烦。</p>
 <p>这个时候，使用面向对象的封装，就可以很好的解决这个问题。把连接数据库和操作数据库的方法进行封装，不管是连接什么数据库还是这个数据库使用什么的操作方法，都使用同一套方法，把不同数据库的差异性，封装起来。TP 的数据层和数据连接层使用的就是这个方法。</p>
-<h1 id="二、TP-数据层的具体实现"><a href="#二、TP-数据层的具体实现" class="headerlink" title="二、TP 数据层的具体实现"></a>二、TP 数据层的具体实现</h1><p>Db 是数据库操作的入口，TP 里面所有关于数据库的操作，都是使用 Db 这个类来实现的，这个类在 thinkphp/library/Db.php 这个文件里面。<br>比如 TP 里面执行某条 SQL 语句，会使用这种方式。<br>$result = Db::query(‘select * from banner_item where banner_id=?’,[$id]);</p>
-<p>TP 里面数据库的实现，主要是依靠下面这些文件，都在 db 这个目录下。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615631218175-3c8aa65a-1792-40d5-a5bc-d853eb253b15.png#align=left&display=inline&height=368&margin=%5Bobject%20Object%5D&name=image.png&originHeight=463&originWidth=435&size=21050&status=done&style=none&width=346" alt="image.png"><br><strong>它们之间的关系：如下图。</strong><br><strong><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615632544897-9741b401-ddee-4bf4-b26e-61c461d65d97.png#align=left&display=inline&height=312&margin=%5Bobject%20Object%5D&name=image.png&originHeight=624&originWidth=866&size=52639&status=done&style=none&width=433" alt="image.png"></strong><br><strong>Connection：</strong>用来连接数据库和执行 SQL。Connection 的下一层是 connector，connector 具有不同数据库的连接类（如下图），connection 根据 database.php 里面的配置，调用 connector 不同的数据库连接类，就可以实现对连接不同数据库的封装。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615630858522-0268724c-16e0-412d-b258-d44f403739ae.png#align=left&display=inline&height=164&margin=%5Bobject%20Object%5D&name=image.png&originHeight=328&originWidth=422&size=15113&status=done&style=none&width=211" alt="image.png"><br><strong>Builder：</strong>用来将 Query 查询器的标准化 API，转换成原生 SQL。转换成 SQL 之后，再调用 Connection 来执行，也就是上面的过程。Builder 下面也有很多不同的文件，用于执行不同的 SQL。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615633149226-2ef9ad4e-1780-46d1-8640-57850cf04391.png#align=left&display=inline&height=173&margin=%5Bobject%20Object%5D&name=image.png&originHeight=345&originWidth=407&size=15155&status=done&style=none&width=203.5" alt="image.png"></p>
-<p>以上，就是 TP 中，解决使用同一套方法，来实现连接和操作不同数据库的过程。<br>不得不说，面向对象太强了！！<br>这其实是一个从具体到抽象的过程，代码的抽象程度越高，适用的范围也就越广。以前会奇怪，为什么有的代码写的这么绕，为什么明明每行代码单独都看的懂，业务逻辑也明白，但是整体看就是看不懂，其实就是因为代码的抽象程度很高，需要从更高的维度去理解。学到了！！</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/13/yuque/ThinkPHP%20%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E5%B1%82%E6%9E%B6%E6%9E%84/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -357,7 +366,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 14:21:11" itemprop="dateModified" datetime="2021-03-15T14:21:11+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 14:30:01" itemprop="dateModified" datetime="2021-03-15T14:30:01+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -380,10 +389,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>今天遇到一个比较奇怪的问题，如下图。一直提示找不到 driver。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615641542911-cbb7e30b-aaff-417c-92dd-0fcfafa56e7e.png#align=left&display=inline&height=59&margin=%5Bobject%20Object%5D&name=image.png&originHeight=118&originWidth=1022&size=26622&status=done&style=none&width=511" alt="image.png"><br>Google 了一下，发现解决办法就是修改 php.ini，把下面这行前面的“；”给去掉。尝试之后，发现无效。<br><code>extension=pdo_mysql</code></p>
-<h2 id="推测一：没有把-mysql-的-pdo-包给导入进来"><a href="#推测一：没有把-mysql-的-pdo-包给导入进来" class="headerlink" title="推测一：没有把 mysql 的 pdo 包给导入进来"></a>推测一：没有把 mysql 的 pdo 包给导入进来</h2><p>验证：在命令行输入 php -m，可以看到 pdo_mysql 已经导入了。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615641839843-9f286ca1-1e09-460b-807f-cf925a15ddfc.png#align=left&display=inline&height=309&margin=%5Bobject%20Object%5D&name=image.png&originHeight=369&originWidth=418&size=14352&status=done&style=none&width=350" alt="image.png"></p>
-<h2 id="推测二：php-ini-没有生效"><a href="#推测二：php-ini-没有生效" class="headerlink" title="推测二：php.ini 没有生效"></a>推测二：php.ini 没有生效</h2><p>又疯狂 Google 后，终于找到了一个解决办法。<strong>修改 php.ini 文件里面的 extension_dir 为绝对路径。</strong><br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642050100-410d2f7a-0e88-483c-962e-63f30df008e3.png#align=left&display=inline&height=79&margin=%5Bobject%20Object%5D&name=image.png&originHeight=158&originWidth=921&size=13667&status=done&style=none&width=460.5" alt="image.png"><br>原因应该是，tp 框架顺着拓展路径去找包，但是因为路径问题，没有找到。修改一下路径就好了。</p>
-
+          <h1 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h1><p>今天遇到一个比较奇怪的问题，如下图。一直提示找不到 driver。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615789379475-52e09828-f278-412a-9e13-e813b150aba3.png#align=left&display=inline&height=149&margin=%5Bobject%20Object%5D&originHeight=149&originWidth=1269&size=0&status=done&style=none&width=1269"><br>Google 了一下，发现解决办法就是修改 php.ini，把下面这行前面的“；”给去掉。尝试之后，发现无效。<br><code>extension=pdo_mysql</code></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/13/yuque/%E4%BF%AE%E6%94%B9PHP.ini%E6%97%A0%E6%95%88/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -433,7 +447,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 14:21:11" itemprop="dateModified" datetime="2021-03-15T14:21:11+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 14:30:02" itemprop="dateModified" datetime="2021-03-15T14:30:02+08:00">2021-03-15</time>
               </span>
 
           
@@ -503,7 +517,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 14:20:30" itemprop="dateModified" datetime="2021-03-15T14:20:30+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 14:29:27" itemprop="dateModified" datetime="2021-03-15T14:29:27+08:00">2021-03-15</time>
               </span>
 
           
@@ -551,7 +565,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/26/yuque/OBS%E6%B7%BB%E5%8A%A0%E6%96%B0%E6%96%87%E4%BB%B6%EF%BC%8C%E6%8A%A5%E9%94%99%EF%BC%9Aerror%20LNK2001!%20%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90%E7%9A%84%E5%A4%96%E9%83%A8%E7%AC%A6%E5%8F%B7/" class="post-title-link" itemprop="url">[OBS添加新文件，报错：error LNK2001: 无法解析的外部符号](https://editor.csdn.net/md/?articleId=113177693)</a>
+            <a href="/2021/01/26/yuque/OBS%E6%B7%BB%E5%8A%A0%E6%96%B0%E6%96%87%E4%BB%B6%EF%BC%8C%E6%8A%A5%E9%94%99%EF%BC%9Aerror%20LNK2001!%20%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90%E7%9A%84%E5%A4%96%E9%83%A8%E7%AC%A6%E5%8F%B7/" class="post-title-link" itemprop="url">OBS添加新文件，报错：error LNK2001: 无法解析的外部符号</a>
         </h2>
 
         <div class="post-meta">
@@ -568,7 +582,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 14:21:11" itemprop="dateModified" datetime="2021-03-15T14:21:11+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 14:30:01" itemprop="dateModified" datetime="2021-03-15T14:30:01+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -592,11 +606,14 @@
 
       
           <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>在 OBS 项目里面，新建一个.cpp 文件，和一个.h 文件，调试项目的时候，会报错，如下图。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615789037039-5f1f0f44-2a5e-40da-a710-887536bbcbbb.png#align=left&display=inline&height=105&margin=%5Bobject%20Object%5D&originHeight=105&originWidth=931&size=0&status=done&style=none&width=931"></p>
-<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><ol>
-<li>在 frontend/obs 里，找到 CmakeLists.txt 文件。<img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615789081120-1276c1e4-f093-4a2a-af3c-877b3e3406e1.png#align=left&display=inline&height=682&margin=%5Bobject%20Object%5D&originHeight=682&originWidth=425&size=0&status=done&style=none&width=425"></li>
-</ol>
-<p>2.添加 xx 新文件.cpp。<img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615789111331-842cfdf4-4d6b-4807-835f-a620365f94f4.png#align=left&display=inline&height=683&margin=%5Bobject%20Object%5D&originHeight=683&originWidth=670&size=0&status=done&style=none&width=670"> 3.添加 xx 新文件.h。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615789134389-d2dc3ec7-8371-429c-a00c-a620085ef0f1.png#align=left&display=inline&height=596&margin=%5Bobject%20Object%5D&originHeight=596&originWidth=563&size=0&status=done&style=none&width=563"> 4.如果有 UI 文件，还需要添加 UI 文件。<img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615789163566-869723f8-3cc4-4983-b9ad-bb4e9a5b9bc2.png#align=left&display=inline&height=600&margin=%5Bobject%20Object%5D&originHeight=600&originWidth=672&size=0&status=done&style=none&width=672"> 5.重现调试项目，即可。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/26/yuque/OBS%E6%B7%BB%E5%8A%A0%E6%96%B0%E6%96%87%E4%BB%B6%EF%BC%8C%E6%8A%A5%E9%94%99%EF%BC%9Aerror%20LNK2001!%20%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90%E7%9A%84%E5%A4%96%E9%83%A8%E7%AC%A6%E5%8F%B7/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -646,7 +663,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 14:21:11" itemprop="dateModified" datetime="2021-03-15T14:21:11+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 14:30:01" itemprop="dateModified" datetime="2021-03-15T14:30:01+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -673,20 +690,14 @@
 <h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>要按照下面的方式来写。</p>
 <p>fromLocal8Bit 的作用是使 GBK/GB2312/GB18030 格式的字符串转换成 Unicode 格式。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dock-&gt;setWindowTitle(QString::fromLocal8Bit(<span class="string">&quot;课程列表&quot;</span>));</span><br></pre></td></tr></table></figure>
-<h1 id="新出现的问题"><a href="#新出现的问题" class="headerlink" title="新出现的问题"></a>新出现的问题</h1><p>过了一段时间，结果按照上面的方式写，又出现中文乱码,如下图。理论上来说，同样的代码执行结果应该是完全一样的。所以可能不是代码的问题，而是别的问题。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642969103-535f6c68-66fd-45d7-b121-341def210e65.png#align=left&display=inline&height=48&margin=%5Bobject%20Object%5D&originHeight=48&originWidth=411&size=0&status=done&style=none&width=411"></p>
-<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p>经过排查和网上搜索相关的文章，发现问题的原因果然不在代码上，而文件的保存格式有问题。通常代码里面中文的编码格式会设置成 UTF-8。但是 UTF-8 也分为两种，一种带签名，一种不带签名。带签名的会有 BOM 信息，来告诉应用程序所用的是 UTF-8 编码。</p>
-<ul>
-<li>UTF-8（带签名）：带有 BOM 信息，可以被应用程序识别为 UTF-8 编码。</li>
-<li>UTF-8（不带签名）：不带有 BOM 信息，不能被应用程序识别为 UTF-8 编码。在被其他文件 include 时，需要使用这种。</li>
-</ul>
-<p>因为编码问题而出现乱码的情况，无非也就两种：一种是在应该使用 UTF-8（带签名）的文件里使用不带签名的编码。另外一种是在不应该带签名的文件里面，使用了带签名的 UTF-8 编码，使文件有两层 BOM 信息，从而导致乱码。</p>
-<p>上面问题出现的原因，是因为这个文件没有带 BOM 信息，导致应用程序无法识别，而出现乱码。</p>
-<h1 id="解决办法-1"><a href="#解决办法-1" class="headerlink" title="解决办法"></a>解决办法</h1><ol>
-<li>在 VS 里，添加高级保存选项。<br>A.选择工具 → 自定义 → 打开命令 → 菜单栏选择【文件】<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642969107-2494b2c3-4987-4827-af42-28ed80c8e79e.png#align=left&display=inline&height=672&margin=%5Bobject%20Object%5D&originHeight=672&originWidth=645&size=0&status=done&style=none&width=645"></li>
-</ol>
-<p>B.点击【添加命令】，选中【文件】，选择【高级保存选项】。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642969229-459add79-998c-4826-acdb-524c3a6a639d.png#align=left&display=inline&height=669&margin=%5Bobject%20Object%5D&originHeight=669&originWidth=797&size=0&status=done&style=none&width=797"></p>
-<p>2.在菜单栏里，点击文件，打开高级保存选项。选择编码格式为【Unicode（UTF-8 带签名）】，点击确定。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642969090-5008f77a-792e-480c-8ead-daa3e78b7cae.png#align=left&display=inline&height=305&margin=%5Bobject%20Object%5D&originHeight=305&originWidth=588&size=0&status=done&style=none&width=588"> 3.修改完成后，中文显示正常，如下图。中文乱码问题解决。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/416423/1615642969470-08df46e7-73c9-4f5f-aca1-9184d46757f7.png#align=left&display=inline&height=47&margin=%5Bobject%20Object%5D&originHeight=47&originWidth=415&size=0&status=done&style=none&width=415"></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/26/yuque/%E5%BD%BB%E5%BA%95%E8%A7%A3%E5%86%B3VisualSutdio%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -736,7 +747,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 14:21:11" itemprop="dateModified" datetime="2021-03-15T14:21:11+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 14:30:01" itemprop="dateModified" datetime="2021-03-15T14:30:01+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -761,12 +772,14 @@
       
           <p>在计算机中，我们经常会碰到精度丢失的问题，比如 100/3=33.33，那么会有 0.01 的精度被丢失掉了。之前以为这种是程序设计的问题，但是后来发现，这个问题的根源，不在于计算机，而在于与计算机紧密相连的数学问题。是数学规定，100/3，就是除不尽。这种问题，可以通过程序设计来规避，比如支付宝的 AA 收款，如果有 100 元，三个人均摊，那么发起 AA 收款的人，需要支付 33.34，另外两个人需要支付 33.33。</p>
 <p>另外一种精度问题，是属于计算机的设计缺陷。比如在计算机里，0.1+0.2！=0.3，因为计算机在处理类似等式时，会把他们换成二进制数，再进行相加。这类问题的根源，在于计算机设计时，采用了二进制的计算方法。这种问题，也可以通过程序设计来进行规避。</p>
-<p>由此想到了语言本身的缺陷。如果一个语言系统足够完美，那么它是不会出现歧义的问题。语言会有歧义，说明语言本身有缺陷。这些缺陷，对于语言来说，并不一定都是坏事，诗人会利用歧义来表达更深刻的意义，幽默的人会利用歧义来表达幽默，歧义在一定程度上，让语言更易于学习。因为一门完美的语言，必定会设计过多的规则去限制，从而导致语言的复杂性变高，更难学习。</p>
-<p>相比于中文，我觉得英文的设计，更加简洁和有逻辑。比如时态这种东西，中文里并没有严格意义上的时态体系，中文一般是通过给动词加状语来表示时态。但是英文里面，光时态的划分就有 16 种。</p>
-<p>更有趣的是，我们可以自己尝试去设计一门语言，用自己制定的规则，去和中文、英文做比较，一是可以体会到造物主的乐趣，毕竟不是所有人都有创造语言的经历，二是可以更好的去学习英语。假如我们学习英语语法，不再是去死记硬背英语的语法，而是去比较英语比我自己设计的语言，好在哪里？为什么要这么设计？有哪些可以借鉴的地方？通过对比，我们可以更深刻的去理解语言背后的逻辑是什么。</p>
-<p>但是像是因为二进制导致的缺陷，就不属于数学的缺陷，而是计算机系统设计的缺陷。计算机设计的时候，底层用的就是二进制，所以一定会存在一定的误差，解决的办法也是通过二进制来</p>
-<p>语言本身也存在缺陷，完美的语言系统，是不会出现歧义的问题。相比于中文，英文的设计更加简洁和优雅。中文会显得繁琐，并缺少逻辑。比如表示时态，英文光时态就有十六种时态，而中文是通过给动词加状语，来表示时间。比如，中文说他去过学校，英文按照时态，可以分成： 4.我好像分不清锦和绵。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/01/yuque/%E9%97%B2%E8%B0%88%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%92%8C%E8%AF%AD%E8%A8%80/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -816,7 +829,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 14:21:11" itemprop="dateModified" datetime="2021-03-15T14:21:11+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-15 14:30:02" itemprop="dateModified" datetime="2021-03-15T14:30:02+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
